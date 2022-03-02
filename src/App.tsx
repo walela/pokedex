@@ -57,9 +57,6 @@ export default function App() {
     <div>
       <Layout>
         <div className="w-full flex flex-col justify-center gap-4 flex-wrap mb-4">
-          <button className="btn-primary" onClick={() => setOffset(0)}>
-            Home{' '}
-          </button>
           <div className="w-full flex justify-center gap-4 flex-wrap mb-4">
             {pokemon.map((p: any) => (
               <div key={p.id}>
@@ -73,7 +70,17 @@ export default function App() {
             ))}
           </div>
           <div className="w-full mx-auto my-4 flex gap-3 justify-center items-center">
-            <button className="btn-primary" onClick={setPrevious}>
+            <button
+              className="btn-primary inline w-32"
+              onClick={() => setOffset(0)}
+            >
+              Home{' '}
+            </button>
+            <button
+              className="btn-primary"
+              onClick={setPrevious}
+              disabled={offset === 0}
+            >
               Previous
             </button>
             <span className="text-gray-700 font-medium">
