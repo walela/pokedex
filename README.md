@@ -1,6 +1,6 @@
 # Pokedex
 
-Deployed link: https://pokedex-csfe9dtft-walela.vercel.app/
+Deployed link: https://pokedex-rosy-chi.vercel.app/
 
 ## About
 
