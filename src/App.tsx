@@ -1,6 +1,7 @@
 import { useEffect, useState, useReducer } from 'react'
 import getInitialPokemon from './api/services/getPokemon'
 import Layout from './components/Layout'
+import Pagination from './components/Pagination'
 import PokemonCard from './components/PokemonCard'
 import { IPokemonPreview } from './types'
 
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <div>
       <Layout>
-        <div className="w-full flex justify-center gap-4 flex-wrap">
+        <div className="w-full flex justify-center gap-4 flex-wrap mb-4">
           {pokemon.map((p: any) => (
             <div key={p.id}>
               <PokemonCard
@@ -30,6 +31,7 @@ export default function App() {
             </div>
           ))}
         </div>
+        <Pagination />
       </Layout>
     </div>
   )
