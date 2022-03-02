@@ -49,7 +49,7 @@ export default function App() {
   }
 
   const setPrevious = () => {
-    setNextPage()
+    setPreviousPage()
     setOffset(offset - 16)
   }
 
