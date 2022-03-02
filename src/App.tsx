@@ -6,12 +6,13 @@ import PokemonCard from './components/PokemonCard'
 import { IPokemonPreview } from './types'
 
 export default function App() {
+  const [count, setCount] = useState(0)
   const [pokemon, setPokemon] = useState<any>([])
   useEffect(() => {
     getInitialPokemon()
       .then((res) => {
-        console.log(res)
-        setPokemon(res)
+        setCount(res.count)
+        setPokemon(res.pokemon)
       })
       .catch()
   }, [])
@@ -31,7 +32,7 @@ export default function App() {
             </div>
           ))}
         </div>
-        <Pagination />
+        <Pagination totalItems={count} />
       </Layout>
     </div>
   )

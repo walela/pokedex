@@ -4,9 +4,10 @@ import { IPokemonPreview } from '../../types'
 export default async function getPokemon(
   limit: number = 16,
   offset: number = 0,
-): Promise<any[]> {
+): Promise<any> {
   let pokemon = []
   const response = await axios.get(`/pokemon?limit=${limit}offset=${offset}`)
+  console.log(response)
   for (const pokemonItem of response.data.results) {
     const pokemonDetailResponse = await axios.get(pokemonItem.url)
     pokemon.push(pokemonDetailResponse.data)
@@ -19,5 +20,5 @@ export default async function getPokemon(
       types: p.types.map((type: any) => type.type.name),
     }
   })
-  return pokemon
+  return { count: response.data.count, pokemon }
 }
