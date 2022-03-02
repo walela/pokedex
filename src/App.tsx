@@ -56,28 +56,33 @@ export default function App() {
   return (
     <div>
       <Layout>
-        <div className="w-full flex justify-center gap-4 flex-wrap mb-4">
-          {pokemon.map((p: any) => (
-            <div key={p.id}>
-              <PokemonCard
-                id={p.id}
-                name={p.name}
-                types={p.types}
-                imageURL={p.imageURL}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="w-full mx-auto my-4 flex gap-3 justify-center items-center">
-          <button className="btn-primary" onClick={setPrevious}>
-            Previous
+        <div className="w-full flex flex-col justify-center gap-4 flex-wrap mb-4">
+          <button className="btn-primary" onClick={() => setOffset(0)}>
+            Home{' '}
           </button>
-          <span className="text-gray-700 font-medium">
-            Current Page: {currentPage + 1} of {totalPages}
-          </span>
-          <button className="btn-primary" onClick={setNext}>
-            Next
-          </button>
+          <div className="w-full flex justify-center gap-4 flex-wrap mb-4">
+            {pokemon.map((p: any) => (
+              <div key={p.id}>
+                <PokemonCard
+                  id={p.id}
+                  name={p.name}
+                  types={p.types}
+                  imageURL={p.imageURL}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="w-full mx-auto my-4 flex gap-3 justify-center items-center">
+            <button className="btn-primary" onClick={setPrevious}>
+              Previous
+            </button>
+            <span className="text-gray-700 font-medium">
+              Current Page: {currentPage + 1} of {totalPages}
+            </span>
+            <button className="btn-primary" onClick={setNext}>
+              Next
+            </button>
+          </div>
         </div>
       </Layout>
     </div>
