@@ -4,7 +4,7 @@ export const getPokemonDetail = async (
   identifier: number | string,
 ): Promise<any> => {
   const { data } = await axios.get(`/pokemon/${identifier}`)
-  console.log(data)
+
 
   let pokemonDetail = {
     species: data.species.name,
@@ -19,7 +19,7 @@ export const getPokemonDetail = async (
       stat: base_stat,
     })),
   }
-  console.log(pokemonDetail)
+
 
   return pokemonDetail
 }

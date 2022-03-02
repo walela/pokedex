@@ -15,6 +15,7 @@ export default function App() {
   const {
     currentPage,
     totalPages,
+    setPage,
     setNextPage,
     setPreviousPage,
   } = usePagination({
@@ -85,7 +86,10 @@ export default function App() {
         <div className="w-full mx-auto my-4 flex gap-3 justify-center items-center">
           <button
             className="btn-primary inline w-32"
-            onClick={() => setOffset(0)}
+            onClick={() => {
+              setPage(0)
+              setOffset(0)
+            }}
           >
             Home{' '}
           </button>
