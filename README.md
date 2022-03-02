@@ -21,7 +21,6 @@ There is a whole lot of improvements I would make if I had extra time:
 - Improve the `loading` and transition states for components with stuff like Spinners or CSS transitions
 - Use a library like `SWR` to cache and dedupe requests to improve performance
 - Replace CRA with `Next.js` SSG, since the API data is static for improved performance.
-
-etc
+- Implement client-side search etc
 
 Well, this was more challenging than I expected it to be, especially under the time constraints!
