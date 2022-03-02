@@ -14,13 +14,10 @@ export const getPokemonDetail = async (
     types: data.types.map((type: any) => type.type.name),
     weight: data.weight,
     moves: data.moves.map((move: any) => move.move.name),
-
-    // moves: data.moves.map(({ move: any }) => move.name),
-    // stats: data.stats.map(({ stat, base_stat }) => ({
-    //   name: stat.name,
-    //   stat: base_stat,
-    // })),
-
+    stats: data.stats.map(({ stat, base_stat }: any) => ({
+      name: stat.name,
+      stat: base_stat,
+    })),
   }
   console.log(pokemonDetail)
 

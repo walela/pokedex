@@ -49,7 +49,7 @@ export default function PokemonDetail(props: any) {
             leaveTo="opacity-0 scale-95"
           >
             <div className="inline-block w-80 my-4 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-t-xl rounded-b-md">
-              <div className="grid place-items-center border-b border-gray-100 bg-gray-50">
+              <div className="grid place-items-center border-b border-gray-100 bg-indigo-50">
                 <img
                   src={pokemonData.imageURL}
                   alt={pokemonData.name}
@@ -65,21 +65,52 @@ export default function PokemonDetail(props: any) {
                 </h1>
               </div>
               <div className="py-1 px-6">
-                <span className="text-indigo-700 font-medium uppercase">Species:</span>
-                <span className="text-gray-400 ml-12"> {pokemonData.species}</span>
+                <span className="text-indigo-700 font-medium uppercase">
+                  Species:
+                </span>
+                <span className="text-gray-400 ml-12">
+                  {' '}
+                  {pokemonData.species}
+                </span>
               </div>
               <div className="py-1 px-6">
-                <span className="text-indigo-700 font-medium uppercase">Types:</span>
-                <span className="text-gray-400 ml-12"> {pokemonData.types?.join(', ')}</span>
+                <span className="text-indigo-700 font-medium uppercase">
+                  Types:
+                </span>
+                <span className="text-gray-400 ml-12">
+                  {' '}
+                  {pokemonData.types?.join(', ')}
+                </span>
               </div>
               <div className="py-1 px-6">
-                <span className="text-indigo-700 font-medium uppercase">Weight:</span>
-                <span className="text-gray-400 ml-12"> {pokemonData.weight}</span>
+                <span className="text-indigo-700 font-medium uppercase">
+                  Weight:
+                </span>
+                <span className="text-gray-400 ml-12">
+                  {' '}
+                  {pokemonData.weight}
+                </span>
               </div>
               <div className="py-1 px-6">
-                <span className="text-indigo-700 font-medium uppercase">Moves:</span>
-                <span className="text-gray-400 ml-2"> {pokemonData.moves?.slice(0, 10).join(', ')}</span>
+                <span className="text-indigo-700 font-medium uppercase">
+                  Moves:
+                </span>
+                <span className="text-gray-400 ml-2">
+                  {' '}
+                  {pokemonData.moves?.slice(0, 10).join(', ')}
+                </span>
                 <span className="text-gray-400 ml-2">among others</span>
+              </div>
+              <div className="py-1 px-6 mb-4">
+                <span className="text-indigo-700 font-medium uppercase">
+                  Stats:
+                </span>
+                {pokemonData.stats?.map((stat: any) => (
+                  <div className="flex justify-between flex-wrap">
+                    <div className="text-gray-600">{stat.name}</div>
+                    <div className="text-gray-400">{stat.stat}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </Transition.Child>
