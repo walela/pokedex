@@ -1,6 +1,10 @@
+interface image {
+ sprites: any
+ 
+}
 export interface IPokemonPreview {
   id: number
   name: string
-  imageURL: string
+  imageURL: image
   types: string[]
 }

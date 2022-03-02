@@ -1,10 +1,16 @@
-import { useEffect } from 'react'
-import getInitialPokemon from './api/services/getInitialPokemon'
+import { useEffect, useState, useReducer } from 'react'
+import getInitialPokemon from './api/services/getPokemon'
 import Layout from './components/Layout'
 
 export default function App() {
+  const [pokemon, setPokemon] = useState([])
   useEffect(() => {
-    getInitialPokemon().then(console.log, console.error)
+    getInitialPokemon()
+      .then((res) => {
+        console.log(res)
+        // setPokemon(data.results)
+      })
+      .catch()
   }, [])
 
   return (
