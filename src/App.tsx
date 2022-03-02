@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react'
+import { useEffect, useState, useReducer, useCallback } from 'react'
 import { usePagination } from 'react-use-pagination'
 import getPokemon from './api/services/getPokemon'
 import Layout from './components/Layout'
@@ -12,6 +12,8 @@ interface PaginationProps {
 export default function App() {
   const [count, setCount] = useState(0)
   const [pokemon, setPokemon] = useState<any>([])
+  const [offset, setOffset] = useState<any>(0)
+
   const {
     currentPage,
     totalPages,
@@ -34,8 +36,22 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    getPokemon(16, offset)
+      .then((res) => {
+        setPokemon(res.pokemon)
+      })
+      .catch()
+  }, [offset])
 
-  }, [currentPage])
+  const setNext = () => {
+    setNextPage()
+    setOffset(offset + 16)
+  }
+
+  const setPrevious = () => {
+    setNextPage()
+    setOffset(offset - 16)
+  }
 
   return (
     <div>
@@ -53,13 +69,13 @@ export default function App() {
           ))}
         </div>
         <div className="w-full mx-auto my-4 flex gap-3 justify-center items-center">
-          <button className="btn-primary" onClick={setPreviousPage}>
+          <button className="btn-primary" onClick={setPrevious}>
             Previous
           </button>
           <span className="text-gray-700 font-medium">
             Current Page: {currentPage + 1} of {totalPages}
           </span>
-          <button className="btn-primary" onClick={setNextPage}>
+          <button className="btn-primary" onClick={setNext}>
             Next
           </button>
         </div>
