@@ -1,3 +1,6 @@
+import { useState } from "react"
+import PokemonDetail from "./PokemonDetail"
+
 interface PokemonCardProps {
   id: number
   name: string
@@ -10,8 +13,18 @@ export default function PokemonCard({
   types,
   imageURL,
 }: PokemonCardProps) {
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
   return (
-    <div className="rounded px-4 cursor-pointer py-2 flex flex-col justify-center shadow bg-gray-100 mb-2 hover:shadow-md">
+    <div className="rounded px-4 cursor-pointer py-2 flex flex-col justify-center shadow bg-gray-100 mb-2 hover:shadow-md" onClick={openModal}>
       <img src={imageURL} alt={name} width={192} height={192} loading="lazy" />
       <div className="text-center text-gray-800 text-xl uppercase py-4">
         <span>{id}. </span>
@@ -28,6 +41,7 @@ export default function PokemonCard({
           </span>
         ))}
       </div>
+      <PokemonDetail isOpen={isOpen} closeModal={closeModal} id={id}/>
     </div>
   )
 }
